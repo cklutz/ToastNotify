@@ -87,8 +87,14 @@ namespace ToastNotify
                     {
                         waitMilliseconds = int.Parse(arg.Substring("-wait:".Length));
                     }
-                    else if (arg == "--" || !arg.StartsWith("-"))
+                    else if (arg == "--")
                     {
+                        i++; // skip over '--'
+                        break;
+                    }
+                    else if (!arg.StartsWith("-"))
+                    {
+                        // Non option argument; just break.
                         break;
                     }
                     else
